@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>springmvcapp2</display-name>
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- Below is used for loading spring mvc related beans like controllers 
+			or mapping handlers and view resolvers -->
+		<!-- -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/springmvc-app2-servlet.xml</param-value>
+		</init-param>
+		<!-- If above init params not found here getting the this error - INFO: 
+			Loading XML bean definitions from ServletContext resource [/WEB-INF/springmvc-servlet.xml] 
+			org.springframework.web.servlet.DispatcherServlet initServletBean SEVERE: 
+			Context initialization failed org.springframework.beans.factory.BeanDefinitionStoreException: 
+			IOException parsing XML document from ServletContext resource [/WEB-INF/springmvc-servlet.xml]; 
+			nested exception is java.io.FileNotFoundException: Could not open ServletContext 
+			resource [/WEB-INF/springmvc-servlet.xml] -->
+		<!-- http://stackoverflow.com/questions/3652090/difference-between-applicationcontext-xml-and-spring-servlet-xml-in-spring-frame, 
+			http://stackoverflow.com/questions/14954931/my-application-could-not-open-servletcontext-resource, 
+			http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-servlet, 
+			http://stackoverflow.com/questions/11708967/what-is-the-difference-between-applicationcontext-and-webapplicationcontext-in-s, 
+			http://stackoverflow.com/questions/600095/splitting-applicationcontext-to-multiple-files/28693991#28693991, 
+			http://stackoverflow.com/questions/9016122/contextloaderlistener-or-not -->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>/springmvc/*</url-pattern>
+	</servlet-mapping>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- Below is used for loading application context related beans other than 
+		controllers and view resolvers(Ex: business objects, data sources, jdbc, 
+		security etc.) also called root context -->
+	<!-- If below details not present default spring will root context with 
+		default name: applicationContext.xml, else will throw the this error - INFO: 
+		Loading XML bean definitions from ServletContext resource [/WEB-INF/applicationContext.xml] 
+		org.springframework.web.context.ContextLoader initWebApplicationContext SEVERE: 
+		Context initialization failed org.springframework.beans.factory.BeanDefinitionStoreException: 
+		IOException parsing XML document from ServletContext resource [/WEB-INF/applicationContext.xml]; 
+		nested exception is java.io.FileNotFoundException: Could not open ServletContext 
+		resource [/WEB-INF/applicationContext.xml] -->
+	<!-- To solve this problem add an empty applicationContext.xml or add the 
+		same above springmvc-app2-servlet.xml for solving this problem as we don't 
+		need applicationContext in our application or avoid adding listener tag with 
+		org.springframework.web.context.ContextLoaderListener -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/springmvc-app2-servlet.xml</param-value>
+	</context-param>
+	<!-- <context-param> -->
+	<!-- <param-name>contextConfigLocation</param-name> -->
+	<!-- <param-value>/WEB-INF/applicationContext.xml</param-value> -->
+	<!-- </context-param> -->
+	<welcome-file-list>
+		<welcome-file>welcome.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
