@@ -11,7 +11,11 @@
 		http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 
 	<context:component-scan base-package="org.pjaygroup.springmvc.controller" />
-	<!-- <mvc:annotation-driven/> --> <!-- Not required this still works -->
+	<!-- With below annotation spring uses RequestMappingHandlerMapping register. Without below code spring uses DefaultAnnotationHandlerMapping registerHandler -->
+	<!-- <mvc:annotation-driven/> --> <!-- Not required this still works as component scan does work of identifying 
+		components, controllers, resources -->
+	<!-- http://stackoverflow.com/questions/6001593/mvcannotation-driven-is-not-bound -->
+	<!-- http://stackoverflow.com/questions/27970602/could-not-find-pathvariable-pathvars-in-requestmapping-spring-mvc -->
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
