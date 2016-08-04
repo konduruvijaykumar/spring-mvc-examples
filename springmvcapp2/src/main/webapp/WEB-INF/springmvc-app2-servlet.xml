@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- http://www.springframework.org/schema/ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
+
+	<context:component-scan base-package="org.pjaygroup.springmvc.controller"/>
+	<!-- http://stackoverflow.com/questions/13661985/spring-mvc-difference-between-contextcomponent-scan-and-annotation-driven, 
+		http://stackoverflow.com/questions/20551217/spring-support-for-controller-given-by-contextcomponent-scan-vs-mvcannot -->
+	<!-- <mvc:annotation-driven/> --> <!-- Not required this still works as component scan does work of identifying 
+		components, controllers, resources -->
+	<!-- http://stackoverflow.com/questions/6001593/mvcannotation-driven-is-not-bound -->
+	
+	<!-- http://stackoverflow.com/questions/27970602/could-not-find-pathvariable-pathvars-in-requestmapping-spring-mvc -->
+	<!-- With below annotation spring uses RequestMappingHandlerMapping register. Without below code spring uses DefaultAnnotationHandlerMapping registerHandler -->
+	<mvc:annotation-driven/>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>
