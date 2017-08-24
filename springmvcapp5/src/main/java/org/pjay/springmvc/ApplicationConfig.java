@@ -11,6 +11,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * @author vijayk
+ * 
+ * https://stackoverflow.com/questions/31835033/web-xml-is-missing-and-failonmissingwebxml-is-set-to-true
+ * https://www.youtube.com/watch?v=-pV351E_stM
+ * https://kielczewski.eu/2013/11/spring-mvc-without-web-xml-using-webapplicationinitializer/
+ * https://www.youtube.com/watch?v=MNgliKze8oI
+ * https://stackoverflow.com/questions/7801155/how-to-run-tomcat-7-using-maven-2-tomcat-plugin
  *
  */
 @Configuration
