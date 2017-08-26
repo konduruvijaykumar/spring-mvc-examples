@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
  * http://www.baeldung.com/custom-error-page-spring-mvc
  * https://github.com/in28minutes/SpringMvcStepByStep/blob/master/Step34.md
  * http://www.logicbig.com/tutorials/spring-framework/spring-web-mvc/controller-advice-exception-handling/
+ * https://stackoverflow.com/questions/36000137/how-to-handle-404-page-not-found-exception-in-spring-mvc-with-java-configuration
+ * https://stackoverflow.com/questions/21061638/spring-mvc-how-to-return-custom-404-errorpages
  * http://www.journaldev.com/2651/spring-mvc-exception-handling-controlleradvice-exceptionhandler-handlerexceptionresolver
  *
  */
