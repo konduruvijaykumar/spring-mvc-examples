@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
  * http://www.baeldung.com/custom-error-page-spring-mvc
  * https://github.com/in28minutes/SpringMvcStepByStep/blob/master/Step34.md
  * http://www.logicbig.com/tutorials/spring-framework/spring-web-mvc/controller-advice-exception-handling/
+ * http://www.journaldev.com/2651/spring-mvc-exception-handling-controlleradvice-exceptionhandler-handlerexceptionresolver
  *
  */
 // This is the controller called, when exception is not handled in application. This is called via web.xml configuration 
